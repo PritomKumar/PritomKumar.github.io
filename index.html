@@ -1,474 +1,925 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pritom Kumar Das</title>
-<meta name="description" content="HCI doctoral researcher at the University of Helsinki studying calibrated trust and risk signaling in agentic AI systems.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    color-scheme: dark;
-    --bg: #0B0E13;
-    --surface: #131922;
-    --surface-2: #1A2230;
-    --border: #242E3D;
-    --text: #E7ECF2;
-    --text-muted: #8B96A6;
-    --accent: #F2A93B;
-    --accent-soft: #4A3A1E;
-    --safe: #3FBE7A;
-    --caution: #F2A93B;
-    --critical: #E8604B;
-    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      color-scheme: light;
-      --bg: #F7F5F1;
-      --surface: #FFFFFF;
-      --surface-2: #EEEAE2;
-      --border: #DEDACF;
-      --text: #1A1E27;
-      --text-muted: #5B6472;
-      --accent: #B9740F;
-      --accent-soft: #F3E3C4;
-      --safe: #1F8F55;
-      --caution: #B9740F;
-      --critical: #C43F2D;
-    }
-  }
-  :root[data-theme="light"] {
-    color-scheme: light;
-    --bg: #F7F5F1;
-    --surface: #FFFFFF;
-    --surface-2: #EEEAE2;
-    --border: #DEDACF;
-    --text: #1A1E27;
-    --text-muted: #5B6472;
-    --accent: #B9740F;
-    --accent-soft: #F3E3C4;
-    --safe: #1F8F55;
-    --caution: #B9740F;
-    --critical: #C43F2D;
-  }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pritom Kumar Das — Doctoral researcher, HCI · University of Helsinki</title>
+<meta name="description" content="Pritom Kumar Das is a doctoral researcher in Computer Science at the University of Helsinki, working on human–computer interaction: how people supervise agentic AI, and how to design risk signals that earn the right amount of trust.">
+<meta name="author" content="Pritom Kumar Das">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://pritomkumar.github.io/">
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover, a:focus-visible { text-decoration: underline; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  img { max-width: 100%; }
-  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding-inline: 20px;
-  }
-  section { padding-block: 64px; }
-  section + section { border-top: 1px solid var(--border); }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pritom Kumar Das">
+<meta property="og:title" content="Pritom Kumar Das — Doctoral researcher, HCI · University of Helsinki">
+<meta property="og:description" content="Designing signals calibrated to what's actually at stake when autonomous AI agents ask for permission.">
+<meta property="og:url" content="https://pritomkumar.github.io/">
+<meta property="og:image" content="https://pritomkumar.github.io/assets/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pritom Kumar Das, doctoral researcher in human–computer interaction at the University of Helsinki">
+<meta name="twitter:card" content="summary_large_image">
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 7px; height: 7px;
-    background: var(--accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('pkd-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
+<link rel="preload" href="assets/fonts/fraunces-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
 
-  /* ---------- Hero ---------- */
-  .hero {
-    padding-block: 88px 64px;
-  }
-  .hero .prompt {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
-  .hero .prompt .cursor {
-    display: inline-block;
-    width: 8px; height: 1em;
-    background: var(--accent);
-    margin-left: 2px;
-    vertical-align: -2px;
-    animation: blink 1.1s step-end infinite;
-  }
-  @media (prefers-reduced-motion: reduce) { .hero .prompt .cursor { animation: none; } }
-  @keyframes blink { 50% { opacity: 0; } }
-  .hero h1 {
-    font-size: clamp(2.3rem, 6vw, 3.4rem);
-    font-weight: 600;
-    line-height: 1.08;
-    margin-bottom: 18px;
-  }
-  .hero .thesis {
-    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
-    color: var(--text);
-    max-width: 58ch;
-    margin-bottom: 22px;
-  }
-  .hero .thesis strong { color: var(--accent); font-weight: 600; }
-  .hero .affiliation {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-  }
-  .links-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-  }
-  .link-chip {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 7px 13px;
-    border-radius: 6px;
-    background: var(--surface);
-  }
-  .link-chip:hover { border-color: var(--accent); text-decoration: none; color: var(--accent); }
-
-  /* ---------- Risk scale motif ---------- */
-  .risk-scale {
-    display: flex;
-    gap: 3px;
-    margin-top: 34px;
-    max-width: 420px;
-  }
-  .risk-scale .seg {
-    flex: 1;
-    height: 8px;
-    border-radius: 2px;
-  }
-  .risk-scale .seg.safe { background: var(--safe); }
-  .risk-scale .seg.caution { background: var(--caution); }
-  .risk-scale .seg.critical { background: var(--critical); }
-  .risk-scale-labels {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    max-width: 420px;
-    margin-top: 6px;
-  }
-
-  /* ---------- About ---------- */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 28px;
-  }
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    gap: 16px;
-    align-items: baseline;
-  }
-  .timeline-item .when {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--accent);
-  }
-  .timeline-item .what strong { color: var(--text); }
-  .timeline-item .what { color: var(--text-muted); font-size: 0.96rem; }
-
-  /* ---------- Research focus ---------- */
-  .research-lede {
-    font-size: 1.15rem;
-    margin-bottom: 20px;
-    max-width: 60ch;
-  }
-  .research-body p { margin: 0 0 16px; max-width: 62ch; color: var(--text); }
-  .research-body p:last-child { margin-bottom: 0; }
-
-  .diagram {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 26px;
-    margin-block: 30px;
-  }
-  .diagram .diagram-title {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 18px;
-  }
-  .diagram-row {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 14px;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-  .diagram-row:last-child { margin-bottom: 0; }
-  .diagram-row .label {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--text-muted);
-  }
-  .diagram-bar {
-    height: 30px;
-    border-radius: 6px;
-    background: var(--surface-2);
-    border: 1px dashed var(--border);
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-inline: 12px;
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    color: var(--text-muted);
-  }
-  .diagram-bar.on {
-    border-style: solid;
-    color: var(--bg);
-    font-weight: 600;
-  }
-  .diagram-bar.on.safe { background: var(--safe); border-color: var(--safe); }
-  .diagram-bar.on.caution { background: var(--caution); border-color: var(--caution); }
-  .diagram-bar.on.critical { background: var(--critical); border-color: var(--critical); }
-  .diagram-caption {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-    border-top: 1px solid var(--border);
-    padding-top: 14px;
-  }
-
-  /* ---------- Publications ---------- */
-  .pub-list { display: flex; flex-direction: column; gap: 0; margin-top: 28px; }
-  .pub {
-    padding-block: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .pub:first-child { border-top: none; padding-top: 0; }
-  .pub-status {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  .pub-status.prep { background: var(--accent-soft); color: var(--accent); }
-  .pub-status.pub { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
-  .pub-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
-  .pub-meta { color: var(--text-muted); font-size: 0.9rem; }
-  .pub-meta a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
-  .pub-meta a:hover { color: var(--accent); }
-
-  /* ---------- Skills ---------- */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 28px;
-  }
-  @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; gap: 24px; } }
-  .skill-col h3 {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-  .skill-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .skill-col li { color: var(--text); font-size: 0.95rem; }
-  .skill-col li span { color: var(--text-muted); }
-
-  /* ---------- Contact / footer ---------- */
-  footer {
-    padding-block: 56px 80px;
-  }
-  footer h2 { font-size: 1.6rem; margin-bottom: 12px; }
-  footer .note {
-    color: var(--text-muted);
-    margin-bottom: 26px;
-    max-width: 52ch;
-  }
-  footer .fine-print {
-    margin-top: 50px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pritom Kumar Das",
+  "url": "https://pritomkumar.github.io/",
+  "jobTitle": "Doctoral Researcher",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Helsinki", "url": "https://www.helsinki.fi/en" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Helsinki" },
+    { "@type": "CollegeOrUniversity", "name": "University of Dhaka" }
+  ],
+  "knowsAbout": ["Human–computer interaction", "Agentic AI", "Human–AI interaction", "Social virtual reality", "Large language models"],
+  "sameAs": [
+    "https://www.linkedin.com/in/pritomkumar/",
+    "https://github.com/PritomKumar",
+    "https://orcid.org/0009-0009-7284-7933",
+    "https://researchportal.helsinki.fi/en/persons/pritom-kumar-das"
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
-<div class="wrap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+</svg>
 
-  <section class="hero">
-    <div class="prompt">$ whoami<span class="cursor"></span></div>
-    <h1>Pritom Kumar Das</h1>
-    <p class="thesis">I study a blind spot in how autonomous AI agents ask permission — and design signals <strong>calibrated to what's actually at stake</strong>.</p>
-    <p class="affiliation">HCI Doctoral Researcher · University of Helsinki<br>Ubiquitous Interaction Research Group · FCAI AI-DOC</p>
-    <div class="links-row">
-      <a class="link-chip" href="mailto:pritom.das@helsinki.fi">pritom.das@helsinki.fi</a>
-      <a class="link-chip" href="https://linkedin.com/in/pritomkumar/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="link-chip" href="https://github.com/PritomKumar" target="_blank" rel="noopener">GitHub</a>
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="Pritom Kumar Das, back to top">
+      <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand__name">Pritom Kumar Das</span>
+    </a>
+    <nav class="nav__links" id="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#journey">Journey</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__tools">
+      <button type="button" class="btn btn--ghost btn--kbd" id="open-palette" aria-haspopup="dialog" aria-label="Open command palette">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><span class="kbd" data-kbd>Ctrl K</span>
+      </button>
+      <button type="button" class="btn btn--icon btn--ghost" id="theme-toggle" aria-label="Switch theme">
+        <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <button type="button" class="btn btn--icon btn--ghost nav__burger" id="nav-burger" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
     </div>
-    <div class="risk-scale">
-      <div class="seg safe"></div><div class="seg caution"></div><div class="seg critical"></div>
-    </div>
-    <div class="risk-scale-labels"><span>trivial</span><span>moderate</span><span>destructive</span></div>
-  </section>
+  </div>
+</header>
 
-  <section id="about">
-    <div class="eyebrow">Background</div>
-    <h2 style="font-size: 1.6rem; margin-bottom: 8px;">Engineer first, researcher now</h2>
-    <p style="color: var(--text-muted); max-width: 58ch;">A software engineering degree and an industry internship before I ever ran a user study — it shows in how I work.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="when">2017–2021</div>
-        <div class="what"><strong>BSc Software Engineering</strong> — University of Dhaka, Bangladesh</div>
-      </div>
-      <div class="timeline-item">
-        <div class="when">2020</div>
-        <div class="what"><strong>Software Engineering Intern</strong> — SELISE (Dhaka) · backend development in .NET, legacy system modernization · awarded "Sprint Hero"</div>
-      </div>
-      <div class="timeline-item">
-        <div class="when">2022–2024</div>
-        <div class="what"><strong>MSc Data Science</strong> — University of Helsinki, full scholarship · thesis on cognition-aware dwell-time modeling</div>
-      </div>
-      <div class="timeline-item">
-        <div class="when">2024–</div>
-        <div class="what"><strong>Doctoral Researcher, HCI</strong> — University of Helsinki, Ubiquitous Interaction Research Group, supervised by Prof. Giulio Jacucci · funded by Finland's national AI doctoral programme (FCAI AI-DOC)</div>
-      </div>
-    </div>
-  </section>
+<main id="main">
 
-  <section id="research">
-    <div class="eyebrow">Research Focus</div>
-    <h2 style="font-size: 1.9rem; margin-bottom: 20px;">The permission problem in agentic AI</h2>
-    <div class="research-body">
-      <p>AI coding assistants like Claude Code and Cursor can now act autonomously — editing files, running commands, even deleting things. But they almost always ask for approval the same way, no matter what's at stake. A trivial formatting change and a destructive deletion look identical on screen. Decades of security-warning research tell us exactly what that produces: people learn to click through without reading, right when it matters most.</p>
-      <p>Starting from interviews with developers who use these tools daily, I designed a notification that signals an action's actual risk — instead of showing nothing, or relying on a blunt rule like "every deletion is dangerous." I'm now running a study comparing that approach against those two cheaper alternatives, to see which one leads to better-calibrated approval decisions: catching what's risky, approving what's safe, without training people to tune out.</p>
-      <p>The goal is concrete design guidance for the next generation of agentic tools — not just <em>whether</em> warnings work, but <strong style="color: var(--text);">which kind of signal earns the right amount of trust.</strong></p>
-    </div>
-
-    <div class="diagram">
-      <div class="diagram-title">Same dialog, every time — vs. a calibrated signal</div>
-      <div class="diagram-row">
-        <div class="label">Rename a file</div>
-        <div class="diagram-bar">Approve this action?</div>
-      </div>
-      <div class="diagram-row">
-        <div class="label">Delete a directory</div>
-        <div class="diagram-bar">Approve this action?</div>
-      </div>
-      <div class="diagram-caption">↑ what most agentic tools do today — identical framing regardless of stakes</div>
-    </div>
-    <div class="diagram">
-      <div class="diagram-title">Calibrated to risk</div>
-      <div class="diagram-row">
-        <div class="label">Rename a file</div>
-        <div class="diagram-bar on safe">Low risk — proceeding</div>
-      </div>
-      <div class="diagram-row">
-        <div class="label">Delete a directory</div>
-        <div class="diagram-bar on critical">High risk — confirm?</div>
-      </div>
-      <div class="diagram-caption">↑ the design under study — signal strength matched to consequence</div>
-    </div>
-  </section>
-
-  <section id="publications">
-    <div class="eyebrow">Selected Publications</div>
-    <h2 style="font-size: 1.6rem;">Research output</h2>
-    <div class="pub-list">
-      <div class="pub">
-        <span class="pub-status prep">ACM TOCHI</span>
-        <div class="pub-title">First-author manuscript for ACM Transactions on Computer–Human Interaction</div>
-        <div class="pub-meta">First author · title withheld pending anonymous review</div>
-      </div>
-      <div class="pub">
-        <span class="pub-status pub">IEEE VR 2025</span>
-        <div class="pub-title">Immersive Tailoring of Embodied Agents Using Large Language Models</div>
-        <div class="pub-meta">Co-author · DOI: <a href="https://doi.org/10.1109/VR59515.2025.00063" target="_blank" rel="noopener">10.1109/VR59515.2025.00063</a></div>
-      </div>
-      <div class="pub">
-        <span class="pub-status pub">Published</span>
-        <div class="pub-title">Associating cognitive abilities with naturalistic search behavior</div>
-        <div class="pub-meta">Second author · from MSc thesis work · DOI: <a href="https://doi.org/10.1002/asi.24963" target="_blank" rel="noopener">10.1002/asi.24963</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="eyebrow">What I bring</div>
-    <h2 style="font-size: 1.6rem;">Research + engineering</h2>
-    <div class="skills-grid">
-      <div class="skill-col">
-        <h3>Research</h3>
-        <ul>
-          <li>Experimental design & <span>controlled studies</span></li>
-          <li>Qualitative interviews with <span>developers</span></li>
-          <li>Statistical analysis & <span>ablation testing</span></li>
-          <li>Human evaluation of <span>AI/agentic systems</span></li>
-          <li>HCI methods for <span>trust & risk perception</span></li>
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="prompt" aria-hidden="true"><span class="prompt__sym">$</span> whoami<span class="cursor"></span></p>
+        <h1 id="hero-title">Pritom Kumar Das</h1>
+        <p class="hero__role">Doctoral researcher · Human–computer interaction</p>
+        <p class="hero__lead">I study a blind spot in how autonomous AI agents ask permission — and design signals <em>calibrated to what's actually at stake</em>.</p>
+        <p class="hero__affil">Department of Computer Science, University of Helsinki · Ubiquitous Interaction Research Group · funded by the Finnish national AI doctoral programme (FCAI AI-DOC)</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#research">Explore my research</a>
+          <a class="btn" href="#lab">Try the permission lab</a>
+        </div>
+        <ul class="hero__links" aria-label="Profiles and contact">
+          <li><a href="mailto:pritom.das@helsinki.fi"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email</a></li>
+          <li><a href="https://github.com/PritomKumar" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/pritomkumar/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://orcid.org/0009-0009-7284-7933" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+          <li><a href="assets/Pritom-Kumar-Das-CV.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>CV (PDF)</a></li>
+        </ul>
+        <ul class="hero__meta" aria-label="Location and availability">
+          <li class="chip"><span class="dot dot--safe" aria-hidden="true"></span>Helsinki, Finland · <span id="clock">--:--</span></li>
+          <li class="chip"><span class="dot" aria-hidden="true"></span>Open to research collaborations and company secondments</li>
         </ul>
       </div>
-      <div class="skill-col">
-        <h3>Engineering</h3>
-        <ul>
-          <li>Python, SQL, <span>.NET</span></li>
-          <li>LLM fine-tuning & <span>sparse autoencoders</span></li>
-          <li>PyTorch, TensorFlow, <span>Hugging Face</span></li>
-          <li>Embodied agents & <span>VR pipelines</span></li>
-          <li>Git, experiment tooling</li>
-        </ul>
+
+      <aside class="hero__visual" aria-label="Illustration: the same permission prompt for every action, versus one calibrated to risk">
+        <div class="signal" id="signal" data-mode="same">
+          <div class="signal__bar"><span>agent · refactor session</span><span>2 requests</span></div>
+          <ul class="signal__list">
+            <li class="req" data-risk="low">
+              <span class="req__cmd">mv utils.py helpers.py</span>
+              <span class="req__ask tag--same">Approve?</span>
+              <span class="risk risk--low tag--cal">Low risk</span>
+            </li>
+            <li class="req" data-risk="high">
+              <span class="req__cmd">rm -rf data/exports/</span>
+              <span class="req__ask tag--same">Approve?</span>
+              <span class="risk risk--high tag--cal">High risk</span>
+            </li>
+          </ul>
+          <div class="signal__foot">
+            <div class="seg" role="group" aria-label="Notification design">
+              <button type="button" data-mode="same" aria-pressed="true">Same prompt</button>
+              <button type="button" data-mode="calibrated" aria-pressed="false">Calibrated</button>
+            </div>
+            <p class="signal__note" aria-live="polite">
+              <span class="note--same">A rename and a deletion get identical framing. Telling them apart is left to the person.</span>
+              <span class="note--cal">Signal strength follows consequence, so attention goes where it's needed.</span>
+            </p>
+          </div>
+        </div>
+        <p class="signal__cap">Illustration of the idea, not a screenshot from my study.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================== ABOUT ============================== -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Engineer first, researcher now</h2>
+      </div>
+      <div class="content">
+        <div class="prose reveal">
+          <p>I'm a doctoral researcher in the Department of Computer Science at the University of Helsinki, working on human–computer interaction. I come from Bangladesh, where I studied software engineering at the Institute of Information Technology, University of Dhaka. In 2022 I moved to Helsinki for a master's in data science, and since 2024 I have been doing my PhD with funding from Finland's national AI doctoral programme, FCAI AI-DOC.</p>
+          <p>My work sits between building and studying: I write the software that runs an experiment, then design the study that shows whether it works for people. That habit comes from software engineering, including an internship at SELISE, where I was part of a healthcare team of nine developers working in an agile, .NET environment.</p>
+          <p>I believe in the aggregation of marginal gains: a small improvement each day adds up to a significant result. It has guided me through my studies and my work. Outside the lab I read, draw and exercise, and I'd like to visit every continent.</p>
+        </div>
+
+        <dl class="glance reveal">
+          <dt>Position</dt>
+          <dd>Doctoral Researcher, Department of Computer Science, University of Helsinki (since August 2024)</dd>
+          <dt>Group</dt>
+          <dd><a href="https://www.helsinki.fi/en/researchgroups/ubiquitous-interaction" target="_blank" rel="noopener noreferrer">Ubiquitous Interaction Research Group</a></dd>
+          <dt>Supervisors</dt>
+          <dd><a href="https://researchportal.helsinki.fi/en/persons/giulio-jacucci" target="_blank" rel="noopener noreferrer">Prof. Giulio Jacucci</a> (primary) · <a href="https://researchportal.helsinki.fi/fi/persons/michael-mathioudakis/" target="_blank" rel="noopener noreferrer">Michael Mathioudakis</a> · <a href="https://www.aalto.fi/en/people/robin-welsch" target="_blank" rel="noopener noreferrer">Robin Welsch</a></dd>
+          <dt>Funding</dt>
+          <dd><a href="https://fcai.fi/ai-doc/home" target="_blank" rel="noopener noreferrer">FCAI AI-DOC</a>, the Finnish Doctoral Program Network in Artificial Intelligence (Language and Speech Technology)</dd>
+          <dt>Right now</dt>
+          <dd>Running a study on risk-calibrated permission notifications · preparing a first-author manuscript for ACM TOCHI · participant in the Academy of Finland project MyModel (2023–2027)</dd>
+          <dt>Education</dt>
+          <dd>MSc Data Science, University of Helsinki (2024) · BSc Software Engineering, University of Dhaka (2021)</dd>
+          <dt>Languages</dt>
+          <dd>English (C2) · Bengali (native)</dd>
+          <dt>Based in</dt>
+          <dd>Helsinki, Finland · from Bangladesh</dd>
+          <dt>Identifiers</dt>
+          <dd><a href="https://orcid.org/0009-0009-7284-7933" target="_blank" rel="noopener noreferrer">ORCID 0009-0009-7284-7933</a> · <a href="https://researchportal.helsinki.fi/en/persons/pritom-kumar-das" target="_blank" rel="noopener noreferrer">University of Helsinki Research Portal</a></dd>
+        </dl>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="eyebrow">Get in touch</div>
-    <h2>Open to spring 2027 collaborations</h2>
-    <p class="note">I'm exploring company secondments and research collaborations before my PhD funding ends — if your team is thinking about trust, safety, or usability in agentic AI, I'd like to hear what you're working on.</p>
-    <div class="links-row">
-      <a class="link-chip" href="mailto:pritom.das@helsinki.fi">pritom.das@helsinki.fi</a>
-      <a class="link-chip" href="https://linkedin.com/in/pritomkumar/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="link-chip" href="https://github.com/PritomKumar" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <div class="fine-print">Helsinki, Finland</div>
-  </footer>
+  <!-- ============================== RESEARCH ============================== -->
+  <section class="section" id="research" aria-labelledby="research-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Research</p>
+        <h2 id="research-title">Designing trust between people and autonomous AI</h2>
+      </div>
+      <div class="content">
+        <div class="reveal" id="study" data-name="Study: risk-calibrated permission notifications" data-kind="Research" data-skills="experiments interviews">
+          <div class="study-head">
+            <h3>The permission problem in agentic AI</h3>
+            <span class="badge badge--live">Study in progress</span>
+          </div>
+          <div class="prose">
+            <p>AI coding assistants like Claude Code and Cursor can now act autonomously: editing files, running commands, even deleting things. But they almost always ask for approval the same way, no matter what's at stake. A trivial formatting change and a destructive deletion look identical on screen.</p>
+            <p>Decades of security-warning research tell us what that does: it trains people to click through without reading, right when it matters most.</p>
+          </div>
+        </div>
 
+        <ol class="steps" aria-label="How the study is set up">
+          <li class="step reveal">
+            <h4>Interviews</h4>
+            <p>Developers who use agentic coding tools every day. This is the starting point for the design.</p>
+          </li>
+          <li class="step reveal">
+            <h4>A risk-signalling notification</h4>
+            <p>A notification that signals an action's actual risk, instead of showing nothing or relying on a cheap rule like “every deletion is dangerous”.</p>
+          </li>
+          <li class="step reveal">
+            <h4>A comparison study</h4>
+            <p>Three approaches, one question: which leads to better-calibrated approval decisions? Catching what's risky and approving what's safe, without training people to tune out.</p>
+          </li>
+        </ol>
+        <div class="reveal">
+          <p class="conds__label" style="margin-top:0">The three approaches compared</p>
+          <ul class="conds" aria-label="The three approaches compared">
+            <li><span class="risk risk--none">Alternative</span>No risk signal</li>
+            <li><span class="risk risk--none">Alternative</span>Blunt rule: every deletion is dangerous</li>
+            <li><span class="risk risk--low">My design</span>Calibrated to actual risk</li>
+          </ul>
+        </div>
+
+        <div class="prose reveal">
+          <p>The goal is design guidance for the next generation of agentic tools: not just <strong>whether</strong> warnings work, but <strong>which kind of signal earns the right amount of trust</strong>.</p>
+        </div>
+
+        <div>
+          <h3>Other research threads</h3>
+          <div class="threads" style="margin-top:16px">
+            <article class="thread reveal" id="thread-vr" data-name="Embodied AI agents in social VR" data-kind="Research" data-skills="embodied vr">
+              <h4>Embodied AI agents in social VR</h4>
+              <p>I build and test a pipeline that gives embodied AI agents conversational capability in VR. I am a co-author of “Immersive Tailoring of Embodied Agents Using Large Language Models” (IEEE VR 2025).</p>
+              <ul class="tags"><li>Social VR</li><li>Embodied agents</li><li>LLMs</li></ul>
+            </article>
+            <article class="thread reveal" id="thread-llm" data-name="Understanding and adapting LLMs" data-kind="Research" data-skills="llmft sae">
+              <h4>Understanding and adapting LLMs</h4>
+              <p>Fine-tuning large language models, and using sparse autoencoders to understand how they work.</p>
+              <ul class="tags"><li>Fine-tuning</li><li>Sparse autoencoders</li><li>Interpretability</li></ul>
+            </article>
+            <article class="thread reveal" id="thread-cog">
+              <h4>Cognition-aware search and interaction</h4>
+              <p>With Tuukka Ruotsalo and Tung Vuong, I have studied how cognitive abilities relate to naturalistic search behaviour (JASIST, 2024) and how they can be incorporated into web-search re-ranking (ACM TOIS, 2025). My master's thesis modelled dwell time in a cognition-aware way.</p>
+              <ul class="tags"><li>Search behaviour</li><li>Cognitive abilities</li><li>Re-ranking</li></ul>
+            </article>
+            <article class="thread reveal" id="thread-log" data-name="User context and interaction logging" data-kind="Research" data-skills="usermodel">
+              <h4>User context and interaction logging</h4>
+              <p>I have built and tested software for logging user context and interaction, and analysed the resulting data with LLMs. Related open-source work: <a href="https://github.com/PritomKumar/HCI_log_capture" target="_blank" rel="noopener noreferrer">HCI_log_capture</a>.</p>
+              <ul class="tags"><li>User modelling</li><li>Logging</li><li>Information retrieval</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PERMISSION LAB ============================== -->
+  <section class="section" id="lab" data-spy="research" aria-labelledby="lab-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Interactive</p>
+        <h2 id="lab-title">The permission lab</h2>
+        <p class="rail__note">An illustration of the idea, not stimuli from my study. Nothing here runs a command, and no data is collected.</p>
+      </div>
+      <div class="content">
+        <div class="lab" id="lab-app">
+          <div class="prose"><p>The same agent proposes the same six actions. Pick an action, switch the design, and decide.</p></div>
+          <div class="lab__modes" role="radiogroup" aria-label="Notification design" style="margin-top:22px">
+            <div class="mode">
+              <input type="radio" name="lab-mode" id="mode-same" value="same" checked>
+              <label for="mode-same"><span class="mode__t">Same prompt</span><span class="mode__d">Every request is framed identically.</span></label>
+            </div>
+            <div class="mode">
+              <input type="radio" name="lab-mode" id="mode-blunt" value="blunt">
+              <label for="mode-blunt"><span class="mode__t">Blunt rule</span><span class="mode__d">Flag every deletion as dangerous.</span></label>
+            </div>
+            <div class="mode">
+              <input type="radio" name="lab-mode" id="mode-cal" value="calibrated">
+              <label for="mode-cal"><span class="mode__t">Calibrated to risk</span><span class="mode__d">Signal strength follows consequence.</span></label>
+            </div>
+          </div>
+          <div class="lab__body">
+            <div>
+              <p class="lab__cap">Agent session · 6 proposed actions</p>
+              <ol class="lab__list" id="lab-list" aria-label="Proposed actions"></ol>
+            </div>
+            <div>
+              <p class="lab__cap">What the person sees</p>
+              <div id="lab-dialog"></div>
+              <p class="lab__caption" id="lab-caption" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="lab__matrix">
+            <p class="lab__cap">What each design signals, action by action</p>
+            <div class="tablewrap">
+              <table class="matrix">
+                <caption class="sr-only">What each notification design signals for each of the six actions</caption>
+                <thead><tr><th scope="col">Action</th><th scope="col">Actual risk (illustrative)</th><th scope="col">Same prompt</th><th scope="col">Blunt rule</th><th scope="col">Calibrated</th></tr></thead>
+                <tbody id="lab-matrix-body"></tbody>
+              </table>
+            </div>
+            <p class="lab__note">The risk levels are my own illustrative judgement for this demo. In the study, the design and the comparison are tested with real developers.</p>
+          </div>
+        </div>
+        <div class="lab-fallback">
+          <p><strong>Interactive demo (needs JavaScript).</strong> The same agent asks permission for six actions: renaming a file, deleting a build cache, editing a config file, overwriting a production settings file, force-pushing to main, and deleting exported data. Three designs are compared: the same prompt for everything; a blunt rule that flags every deletion; and a signal calibrated to actual risk. The blunt rule cries wolf about the harmless cache deletion and stays silent about the force-push.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PUBLICATIONS ============================== -->
+  <section class="section" id="publications" aria-labelledby="pubs-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Publications</p>
+        <h2 id="pubs-title">Peer-reviewed work</h2>
+        <p class="rail__note">All three published papers are also listed on my ORCID record and the University of Helsinki Research Portal.</p>
+      </div>
+      <div class="content">
+        <div class="pubs">
+
+          <article class="pub pub--pending reveal" id="pub-tochi" data-name="First-author manuscript (ACM TOCHI)" data-kind="Paper">
+            <header class="pub__head"><span class="badge">Manuscript</span></header>
+            <h3 class="pub__title">First-author manuscript for ACM Transactions on Computer–Human Interaction</h3>
+            <p class="pub__venue">Title withheld pending anonymous review.</p>
+            <div class="pub__actions">
+              <a class="btn btn--sm" href="https://dl.acm.org/journal/tochi" target="_blank" rel="noopener noreferrer">About TOCHI <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="pub__pos">first author</span>
+            </div>
+          </article>
+
+          <article class="pub reveal" id="pub-tois" data-name="Incorporating Cognitive Abilities into Web Search Re-ranking" data-kind="Paper">
+            <header class="pub__head"><span class="badge">Journal article</span><span class="pub__year">2025</span></header>
+            <h3 class="pub__title">Incorporating Cognitive Abilities into Web Search Re-ranking</h3>
+            <p class="pub__authors">Tung Vuong, <strong>Pritom Kumar Das</strong>, Tuukka Ruotsalo</p>
+            <p class="pub__venue">ACM Transactions on Information Systems 43(5), 1–35 · July 2025 · open access</p>
+            <div class="pub__actions">
+              <a class="btn btn--sm" href="https://doi.org/10.1145/3736401" target="_blank" rel="noopener noreferrer">DOI <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <button type="button" class="btn btn--sm" data-copy-target="#bib-tois" data-copied="BibTeX copied"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy BibTeX</button>
+              <span class="pub__pos">2nd of 3 authors</span>
+            </div>
+            <details class="bib"><summary>Show BibTeX</summary>
+<pre id="bib-tois">@article{vuong2025incorporating,
+  title     = {Incorporating Cognitive Abilities into Web Search Re-ranking},
+  author    = {Vuong, Tung and Das, Pritom Kumar and Ruotsalo, Tuukka},
+  journal   = {ACM Transactions on Information Systems},
+  volume    = {43},
+  number    = {5},
+  pages     = {1--35},
+  year      = {2025},
+  month     = jul,
+  publisher = {Association for Computing Machinery},
+  doi       = {10.1145/3736401},
+  url       = {https://doi.org/10.1145/3736401}
+}</pre></details>
+          </article>
+
+          <article class="pub reveal" id="pub-vr" data-name="Immersive Tailoring of Embodied Agents Using LLMs (IEEE VR 2025)" data-kind="Paper" data-skills="embodied vr">
+            <header class="pub__head"><span class="badge">Conference paper</span><span class="pub__year">2025</span></header>
+            <h3 class="pub__title">Immersive Tailoring of Embodied Agents Using Large Language Models</h3>
+            <p class="pub__authors">Andrea Bellucci, Giulio Jacucci, Kien Duong Trung, <strong>Pritom Kumar Das</strong>, Sergei Viktorovich Smirnov, Imtiaj Ahmed, Jean-Luc Lugrin</p>
+            <p class="pub__venue">2025 IEEE Conference on Virtual Reality and 3D User Interfaces (VR), Saint Malo, France · pp. 392–400 · co-presented</p>
+            <div class="pub__actions">
+              <a class="btn btn--sm" href="https://doi.org/10.1109/VR59515.2025.00063" target="_blank" rel="noopener noreferrer">DOI <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <button type="button" class="btn btn--sm" data-copy-target="#bib-vr" data-copied="BibTeX copied"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy BibTeX</button>
+              <span class="pub__pos">4th of 7 authors</span>
+            </div>
+            <details class="bib"><summary>Show BibTeX</summary>
+<pre id="bib-vr">@inproceedings{bellucci2025immersive,
+  title     = {Immersive Tailoring of Embodied Agents Using Large Language Models},
+  author    = {Bellucci, Andrea and Jacucci, Giulio and Trung, Kien Duong and Das, Pritom Kumar and Smirnov, Sergei Viktorovich and Ahmed, Imtiaj and Lugrin, Jean-Luc},
+  booktitle = {2025 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)},
+  address   = {Saint Malo, France},
+  pages     = {392--400},
+  year      = {2025},
+  month     = mar,
+  publisher = {IEEE},
+  doi       = {10.1109/VR59515.2025.00063},
+  url       = {https://doi.org/10.1109/VR59515.2025.00063}
+}</pre></details>
+          </article>
+
+          <article class="pub reveal" id="pub-jasist" data-name="Associating cognitive abilities with naturalistic search behavior (JASIST)" data-kind="Paper">
+            <header class="pub__head"><span class="badge">Journal article</span><span class="pub__year">2024</span></header>
+            <h3 class="pub__title">Associating cognitive abilities with naturalistic search behavior</h3>
+            <p class="pub__authors">Tung Vuong, <strong>Pritom Kumar Das</strong>, Tuukka Ruotsalo</p>
+            <p class="pub__venue">Journal of the Association for Information Science and Technology 76(4), 665–685 · published online November 2024 · open access</p>
+            <div class="pub__actions">
+              <a class="btn btn--sm" href="https://doi.org/10.1002/asi.24963" target="_blank" rel="noopener noreferrer">DOI <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <button type="button" class="btn btn--sm" data-copy-target="#bib-jasist" data-copied="BibTeX copied"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy BibTeX</button>
+              <span class="pub__pos">2nd of 3 authors</span>
+            </div>
+            <details class="bib"><summary>Show BibTeX</summary>
+<pre id="bib-jasist">@article{vuong2025associating,
+  title     = {Associating cognitive abilities with naturalistic search behavior},
+  author    = {Vuong, Tung and Das, Pritom Kumar and Ruotsalo, Tuukka},
+  journal   = {Journal of the Association for Information Science and Technology},
+  volume    = {76},
+  number    = {4},
+  pages     = {665--685},
+  year      = {2025},
+  publisher = {Wiley},
+  doi       = {10.1002/asi.24963},
+  url       = {https://doi.org/10.1002/asi.24963},
+  note      = {First published online 6 November 2024}
+}</pre></details>
+          </article>
+        </div>
+
+        <div class="pubs-foot reveal">
+          <a class="btn btn--sm" href="https://orcid.org/0009-0009-7284-7933" target="_blank" rel="noopener noreferrer">ORCID <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--sm" href="https://researchportal.helsinki.fi/en/persons/pritom-kumar-das" target="_blank" rel="noopener noreferrer">University of Helsinki Research Portal <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== JOURNEY ============================== -->
+  <section class="section" id="journey" aria-labelledby="journey-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Journey</p>
+        <h2 id="journey-title">From Dhaka to Helsinki</h2>
+        <p class="rail__note">Filter by type, or open an entry for the detail.</p>
+      </div>
+      <div class="content">
+        <div>
+          <div class="filters" role="group" aria-label="Filter the timeline">
+            <button type="button" class="chip" data-tl-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-tl-filter="research" aria-pressed="false">Research</button>
+            <button type="button" class="chip" data-tl-filter="education" aria-pressed="false">Education</button>
+            <button type="button" class="chip" data-tl-filter="industry" aria-pressed="false">Industry</button>
+            <button type="button" class="chip" data-tl-filter="service" aria-pressed="false">Service</button>
+            <button type="button" class="chip spacer" id="tl-expand" aria-pressed="false">Expand all</button>
+          </div>
+          <p class="sr-only" id="tl-status" aria-live="polite">8 of 8 entries shown</p>
+
+          <ol class="timeline" id="timeline">
+
+            <li class="tl-item reveal" id="tl-phd" data-cat="research" data-name="Doctoral Researcher, University of Helsinki" data-kind="Role" data-skills="llmft sae embodied vr experiments interviews">
+              <div class="tl-when">Aug 2024 – present</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--research">Research</span></div>
+                <h3>Doctoral Researcher</h3>
+                <p class="tl-org">University of Helsinki · Department of Computer Science · Ubiquitous Interaction Research Group</p>
+                <p>Human–computer interaction research, funded by the Finnish national AI doctoral programme (FCAI AI-DOC, Language and Speech Technology).</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Designing and evaluating risk-calibrated permission notifications for agentic AI coding tools: developer interviews, a designed notification, and a comparison study that is now running.</li>
+                    <li>Building and testing a pipeline that gives embodied AI agents conversational capability in VR.</li>
+                    <li>Research on fine-tuning LLMs and on understanding LLMs with sparse autoencoders.</li>
+                    <li>Participant in <a href="https://researchportal.helsinki.fi/en/projects/mymodel-interactive-models-for-resourceful-recommendations/" target="_blank" rel="noopener noreferrer">MyModel: Interactive Models for Resourceful Recommendations</a>, an Academy of Finland project led by Giulio Jacucci (2023–2027).</li>
+                    <li>Supervisors: Prof. Giulio Jacucci (primary), Michael Mathioudakis and Robin Welsch (secondary).</li>
+                  </ul></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-ra-uii" data-cat="research" data-name="Research Assistant, Ubiquitous Interaction Research Group" data-kind="Role" data-skills="usermodel">
+              <div class="tl-when">Jan – Jul 2024</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--research">Research</span></div>
+                <h3>Research Assistant</h3>
+                <p class="tl-org">Ubiquitous Interaction Research Group, University of Helsinki · supervisor Giulio Jacucci</p>
+                <p>Research in human–computer interaction, information retrieval, user modelling and logging.</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Built and tested software for user context and interaction logging.</li>
+                    <li>Analysed and explored user context data with LLMs.</li>
+                  </ul></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-ra-cog" data-cat="research" data-name="Research Assistant, Cognitive Computing Research Group" data-kind="Role" data-skills="tensorflow huggingface stats regression ablation">
+              <div class="tl-when">Feb – Dec 2023</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--research">Research</span></div>
+                <h3>Research Assistant</h3>
+                <p class="tl-org"><a href="https://www.cs.helsinki.fi/group/intercom/" target="_blank" rel="noopener noreferrer">Cognitive Computing Research Group</a>, University of Helsinki · supervisor Tuukka Ruotsalo</p>
+                <p>Research at the intersection of data science and cognitive science, working with cognitive data to answer open research questions.</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Analysed and modelled participants' cognitive-ability data with statistical testing, and used statistical analysis to find the significance of variables.</li>
+                    <li>Used LLMs to find semantic similarity between user tasks.</li>
+                    <li>Applied regression analysis, ablation tests and other machine-learning techniques.</li>
+                    <li>Tools: Jupyter Notebook, TensorFlow, Hugging Face, Visual Studio Code.</li>
+                    <li>Listed as a participant in the Academy of Finland-funded project <a href="https://researchportal.helsinki.fi/en/projects/aivojoukkoistaminen-affektiivisten-piirteiden-ennustamiseen/" target="_blank" rel="noopener noreferrer">Aivojoukkoistaminen affektiivisten piirteiden ennustamiseen</a> (2022–2025), led by Tuukka Ruotsalo.</li>
+                  </ul></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-service" data-cat="service" data-name="Student representative and tutor, Data Science Master's Programme" data-kind="Service">
+              <div class="tl-when">Jan 2023 – Aug 2024</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--service">Service</span></div>
+                <h3>Student representative and international tutor</h3>
+                <p class="tl-org">Data Science Master's Programme, University of Helsinki</p>
+                <p>Steering-group member and tutor for the programme I was studying in.</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Student Representative: official member of the steering group of the Data Science Master's Programme (Jan 2023 – Aug 2024).</li>
+                    <li>International Student Tutor (Aug – Dec 2023): tutor for the programme's international students, and late-arrival tutor for all students on the Kumpula campus for the fall 2023 admission.</li>
+                  </ul></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-msc" data-cat="education" data-name="MSc in Data Science, University of Helsinki" data-kind="Education">
+              <div class="tl-when">Sep 2022 – Jul 2024</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--education">Education</span></div>
+                <h3>MSc in Data Science</h3>
+                <p class="tl-org">University of Helsinki, Finland · full (100%) scholarship</p>
+                <p>Thesis: “Cognition-aware Dwell Time Modeling: Evaluating Relevance and Usefulness”.</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Practical experience in exploratory data analysis, data visualisation, research procedure, machine learning and large language models.</li>
+                    <li>The thesis work led to a second-author paper in JASIST (see Publications).</li>
+                  </ul>
+                  <div class="tl-links"><a class="btn btn--sm" href="https://drive.google.com/file/d/1FedeRxiai4mFXJGcJVgPVTAhq0EYsG4d/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Degree certificate (PDF)</a></div></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-selise" data-cat="industry" data-name="Software Engineering Intern, SELISE" data-kind="Role" data-skills="csharp dotnet ef git jira sql">
+              <div class="tl-when">Jan – Jun 2020</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--industry">Industry</span></div>
+                <h3>Software Engineering Intern</h3>
+                <p class="tl-org"><a href="https://selisegroup.com/" target="_blank" rel="noopener noreferrer">SELISE</a>, Dhaka · a Swiss-based software company</p>
+                <p>Part of the Health Care Team of nine developers, working in an agile team. Awarded “Sprint Hero” as the team's most outstanding intern.</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Worked as a backend developer in the .NET environment and maintained the code base.</li>
+                    <li>Transformed legacy Visual Basic software to .NET with Entity Framework.</li>
+                    <li>Built desktop forms and dashboards with the .NET framework.</li>
+                    <li>Tools: .NET, C#, Entity Framework, SQL, Git, Visual Studio, Jira.</li>
+                  </ul>
+                  <div class="tl-links"><a class="btn btn--sm" href="https://drive.google.com/file/d/1QvaGOnZPj76EEQU5Zxt0OohybAiq1PqL/view?usp=share_link" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Employment certificate (PDF)</a></div></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-bsc" data-cat="education" data-name="BSc in Software Engineering, University of Dhaka" data-kind="Education">
+              <div class="tl-when">2017 – 2021</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--education">Education</span></div>
+                <h3>BSc in Software Engineering</h3>
+                <p class="tl-org">Institute of Information Technology, University of Dhaka, Bangladesh · CGPA 3.75 / 4.00</p>
+                <p>Final-year project: EarnEasy. Awarded the AHZ Associates' Special Achievement Award for outstanding performance on the bachelor's degree (2021).</p>
+                <details><summary>Details</summary>
+                  <div><ul>
+                    <li>Coursework in software development, software testing, programming, algorithms and data structures, mobile application development and web development.</li>
+                    <li>1st Runner-Up, SPL Project Showcasing 2019 (Industry–Academia Collaboration, University of Dhaka), for the Dhaka University Calendar project.</li>
+                  </ul>
+                  <div class="tl-links"><a class="btn btn--sm" href="https://drive.google.com/file/d/14ktW3jbsfRJoZTXqLtEoj0N1T9TVsCOr/view?usp=share_link" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Academic transcript (PDF)</a></div></div>
+                </details>
+              </div>
+            </li>
+
+            <li class="tl-item reveal" id="tl-school" data-cat="education" data-name="School education, Dhaka" data-kind="Education">
+              <div class="tl-when">2014 – 2016</div>
+              <div class="tl-main">
+                <div class="tl-top"><span class="badge badge--education">Education</span></div>
+                <h3>Secondary and higher secondary school</h3>
+                <p class="tl-org">Dhaka, Bangladesh</p>
+                <p>Secondary School Certificate (2014) at Udayan Higher Secondary School and Higher Secondary School Certificate (2016) at Dhaka College, both with a GPA of 5.00 out of 5.00.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROJECTS ============================== -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Projects</p>
+        <h2 id="projects-title">Things I've built</h2>
+        <p class="rail__note">Recent research tooling, and the projects from my bachelor's degree.</p>
+      </div>
+      <div class="content">
+        <div>
+          <div class="filters" role="group" aria-label="Filter the projects">
+            <button type="button" class="chip" data-proj-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-proj-filter="research" aria-pressed="false">Research tooling</button>
+            <button type="button" class="chip" data-proj-filter="undergrad" aria-pressed="false">Undergraduate</button>
+          </div>
+          <p class="sr-only" id="proj-status" aria-live="polite">9 of 9 projects shown</p>
+          <div class="projects">
+
+            <article class="proj reveal" id="proj-log" data-group="research" data-name="HCI_log_capture" data-kind="Project" data-skills="python cv usermodel">
+              <div class="proj__meta"><span>Python</span><span>2024–2025</span></div>
+              <h3><a href="https://github.com/PritomKumar/HCI_log_capture" target="_blank" rel="noopener noreferrer">HCI_log_capture</a></h3>
+              <p>Windows tooling that records the screen, takes OCR'd screenshots, and logs keyboard, mouse and active-window events: a toolkit for capturing user context and interaction.</p>
+              <ul class="tags"><li>Python</li><li>pynput</li><li>OpenCV</li><li>EasyOCR</li><li>PyInstaller</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/HCI_log_capture" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-action" data-group="research" data-name="action-capture-opencv" data-kind="Project" data-skills="python cv">
+              <div class="proj__meta"><span>Python</span><span>2025</span></div>
+              <h3><a href="https://github.com/PritomKumar/action-capture-opencv" target="_blank" rel="noopener noreferrer">action-capture-opencv</a></h3>
+              <p>Webcam hand-motion detection built on OpenCV and MediaPipe.</p>
+              <ul class="tags"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/action-capture-opencv" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-tts" data-group="research" data-name="iui_audio_creation_with_parler_tts" data-kind="Project" data-skills="python pytorch tts huggingface">
+              <div class="proj__meta"><span>Python · Shell</span><span>2024</span></div>
+              <h3><a href="https://github.com/PritomKumar/iui_audio_creation_with_parler_tts" target="_blank" rel="noopener noreferrer">iui_audio_creation_with_parler_tts</a></h3>
+              <p>Generates synthetic speech for a list of voice commands with Parler-TTS, in several speaker styles, with scripts for running on a GPU cluster.</p>
+              <ul class="tags"><li>Python</li><li>PyTorch</li><li>Parler-TTS</li><li>Hugging Face</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/iui_audio_creation_with_parler_tts" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-diar" data-group="research" data-name="Speech-Diarization" data-kind="Project" data-skills="python asr diarization">
+              <div class="proj__meta"><span>Python · Jupyter</span><span>2024</span></div>
+              <h3><a href="https://github.com/PritomKumar/Speech-Diarization" target="_blank" rel="noopener noreferrer">Speech-Diarization</a></h3>
+              <p>Experiments with real-time speaker diarization and transcription using diart, pyannote and Whisper, plus tests with LLaMA 3.</p>
+              <ul class="tags"><li>Python</li><li>diart</li><li>pyannote</li><li>Whisper</li><li>LLaMA 3</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/Speech-Diarization" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-earn" data-group="undergrad" data-name="EarnEasy" data-kind="Project" data-skills="dart flutter firebase typescript javascript java android gmaps">
+              <div class="proj__meta"><span>Dart · Flutter</span><span>BSc final-year project</span></div>
+              <h3><a href="https://github.com/PritomKumar/Software-Project-Lab-3" target="_blank" rel="noopener noreferrer">EarnEasy</a></h3>
+              <p>A crowdsourcing application that works as a platform between the population and companies: companies provide tasks, and users are free to choose which to do. Features include a map view of tasks, push notifications and work scheduling based on user merit.</p>
+              <ul class="tags"><li>Dart</li><li>Flutter</li><li>TypeScript</li><li>Firebase Firestore</li><li>Google Maps</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/Software-Project-Lab-3" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-ducal" data-group="undergrad" data-name="Dhaka University Calendar" data-kind="Project" data-skills="java php sql android gmaps">
+              <div class="proj__meta"><span>Java · Android</span><span>BSc project</span></div>
+              <h3><a href="https://github.com/PritomKumar/DU-Calendar-DEV" target="_blank" rel="noopener noreferrer">Dhaka University Calendar</a></h3>
+              <p class="proj__award">1st Runner-Up, SPL Project Showcasing 2019 (Industry–Academia Collaboration, University of Dhaka)</p>
+              <p>An application that bridges the university and its students, giving new students the information they need about university services and the locations of infrastructure.</p>
+              <ul class="tags"><li>Java</li><li>PHP</li><li>SQL</li><li>Android Studio</li><li>Retrofit</li><li>Google Maps</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/DU-Calendar-DEV" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-bangla" data-group="undergrad" data-name="Handwritten Bangla letter recognition" data-kind="Project" data-skills="python tensorflow keras latex">
+              <div class="proj__meta"><span>Python · Jupyter</span><span>Machine-learning research</span></div>
+              <h3><a href="https://github.com/PritomKumar/ML-FInal-Project" target="_blank" rel="noopener noreferrer">Handwritten Bangla letter recognition</a></h3>
+              <p>A machine-learning study aimed at increasing the accuracy of recognising handwritten Bangla letters with a deep convolutional neural network.</p>
+              <ul class="tags"><li>Python</li><li>Keras</li><li>TensorFlow</li><li>Jupyter</li><li>LaTeX</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/ML-FInal-Project" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-dse" data-group="undergrad" data-name="DSE Stock Market Estimator" data-kind="Project" data-skills="python django docker mongodb vue keras">
+              <div class="proj__meta"><span>Python · Django · Vue</span><span>Web app</span></div>
+              <h3><a href="https://github.com/fuadmmnf/dse_stock_estimation-backend" target="_blank" rel="noopener noreferrer">DSE Stock Market Estimator</a></h3>
+              <p>A web app that predicts future stock prices on the Dhaka Stock Exchange using deep learning.</p>
+              <ul class="tags"><li>Python</li><li>Django</li><li>Vue</li><li>Docker</li><li>MongoDB</li><li>Keras</li></ul>
+              <a class="proj__link" href="https://github.com/fuadmmnf/dse_stock_estimation-backend" target="_blank" rel="noopener noreferrer">View backend on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+
+            <article class="proj reveal" id="proj-bandit" data-group="undergrad" data-name="Text Bandit" data-kind="Project" data-skills="c cpp">
+              <div class="proj__meta"><span>C++ · C</span><span>Networking</span></div>
+              <h3><a href="https://github.com/PritomKumar/SPLproject-1" target="_blank" rel="noopener noreferrer">Text Bandit</a></h3>
+              <p>A network-analysis tool that captures and analyses packets to find text content in open HTTP connections on any network.</p>
+              <ul class="tags"><li>C</li><li>C++</li><li>Sockets</li><li>Code::Blocks</li></ul>
+              <a class="proj__link" href="https://github.com/PritomKumar/SPLproject-1" target="_blank" rel="noopener noreferrer">View on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SKILLS ============================== -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Toolbox</p>
+        <h2 id="skills-title">Skills, with receipts</h2>
+        <p class="rail__note">Every skill links back to where I have actually used it.</p>
+      </div>
+      <div class="content">
+        <div class="skillgroups">
+          <div class="skillgroup">
+            <h3>Languages</h3>
+            <ul>
+              <li><button type="button" class="chip skill" data-skill="python" aria-pressed="false">Python</button></li>
+              <li><button type="button" class="chip skill" data-skill="csharp" aria-pressed="false">C#</button></li>
+              <li><button type="button" class="chip skill" data-skill="java" aria-pressed="false">Java</button></li>
+              <li><button type="button" class="chip skill" data-skill="cpp" aria-pressed="false">C++</button></li>
+              <li><button type="button" class="chip skill" data-skill="c" aria-pressed="false">C</button></li>
+              <li><button type="button" class="chip skill" data-skill="dart" aria-pressed="false">Dart</button></li>
+              <li><button type="button" class="chip skill" data-skill="typescript" aria-pressed="false">TypeScript</button></li>
+              <li><button type="button" class="chip skill" data-skill="javascript" aria-pressed="false">JavaScript</button></li>
+              <li><button type="button" class="chip skill" data-skill="sql" aria-pressed="false">SQL</button></li>
+              <li><button type="button" class="chip skill" data-skill="php" aria-pressed="false">PHP</button></li>
+              <li><button type="button" class="chip skill" data-skill="latex" aria-pressed="false">LaTeX</button></li>
+            </ul>
+          </div>
+          <div class="skillgroup">
+            <h3>Machine learning and AI</h3>
+            <ul>
+              <li><button type="button" class="chip skill" data-skill="pytorch" aria-pressed="false">PyTorch</button></li>
+              <li><button type="button" class="chip skill" data-skill="tensorflow" aria-pressed="false">TensorFlow</button></li>
+              <li><button type="button" class="chip skill" data-skill="keras" aria-pressed="false">Keras</button></li>
+              <li><button type="button" class="chip skill" data-skill="huggingface" aria-pressed="false">Hugging Face</button></li>
+              <li><button type="button" class="chip skill" data-skill="llmft" aria-pressed="false">LLM fine-tuning</button></li>
+              <li><button type="button" class="chip skill" data-skill="sae" aria-pressed="false">Sparse autoencoders</button></li>
+              <li><button type="button" class="chip skill" data-skill="asr" aria-pressed="false">Speech recognition</button></li>
+              <li><button type="button" class="chip skill" data-skill="diarization" aria-pressed="false">Speaker diarization</button></li>
+              <li><button type="button" class="chip skill" data-skill="tts" aria-pressed="false">Text-to-speech</button></li>
+              <li><button type="button" class="chip skill" data-skill="cv" aria-pressed="false">Computer vision</button></li>
+              <li><button type="button" class="chip skill" data-skill="embodied" aria-pressed="false">Embodied agents</button></li>
+              <li><button type="button" class="chip skill" data-skill="vr" aria-pressed="false">Virtual reality</button></li>
+            </ul>
+          </div>
+          <div class="skillgroup">
+            <h3>Research methods</h3>
+            <ul>
+              <li><button type="button" class="chip skill" data-skill="experiments" aria-pressed="false">Experimental design</button></li>
+              <li><button type="button" class="chip skill" data-skill="interviews" aria-pressed="false">Qualitative interviews</button></li>
+              <li><button type="button" class="chip skill" data-skill="stats" aria-pressed="false">Statistical analysis</button></li>
+              <li><button type="button" class="chip skill" data-skill="regression" aria-pressed="false">Regression analysis</button></li>
+              <li><button type="button" class="chip skill" data-skill="ablation" aria-pressed="false">Ablation testing</button></li>
+              <li><button type="button" class="chip skill" data-skill="usermodel" aria-pressed="false">User modelling and logging</button></li>
+            </ul>
+          </div>
+          <div class="skillgroup">
+            <h3>Engineering</h3>
+            <ul>
+              <li><button type="button" class="chip skill" data-skill="dotnet" aria-pressed="false">.NET</button></li>
+              <li><button type="button" class="chip skill" data-skill="ef" aria-pressed="false">Entity Framework</button></li>
+              <li><button type="button" class="chip skill" data-skill="flutter" aria-pressed="false">Flutter</button></li>
+              <li><button type="button" class="chip skill" data-skill="android" aria-pressed="false">Android</button></li>
+              <li><button type="button" class="chip skill" data-skill="firebase" aria-pressed="false">Firebase</button></li>
+              <li><button type="button" class="chip skill" data-skill="django" aria-pressed="false">Django</button></li>
+              <li><button type="button" class="chip skill" data-skill="vue" aria-pressed="false">Vue</button></li>
+              <li><button type="button" class="chip skill" data-skill="docker" aria-pressed="false">Docker</button></li>
+              <li><button type="button" class="chip skill" data-skill="mongodb" aria-pressed="false">MongoDB</button></li>
+              <li><button type="button" class="chip skill" data-skill="gmaps" aria-pressed="false">Google Maps API</button></li>
+              <li><button type="button" class="chip skill" data-skill="git" aria-pressed="false">Git</button></li>
+              <li><button type="button" class="chip skill" data-skill="jira" aria-pressed="false">Jira</button></li>
+            </ul>
+          </div>
+        </div>
+        <div class="skill-results" id="skill-results" aria-live="polite">
+          <p class="skill-results__hint">Tap a skill to see the projects, roles and studies where I have used it. (Needs JavaScript.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== RECOGNITION & CREDENTIALS ============================== -->
+  <section class="section" id="recognition" aria-labelledby="recog-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Recognition</p>
+        <h2 id="recog-title">Funding, awards, service and credentials</h2>
+      </div>
+      <div class="content">
+        <div class="recog reveal">
+          <div>
+            <h3>Funding</h3>
+            <ul>
+              <li><strong>FCAI AI-DOC</strong>: doctoral funding from the Finnish Doctoral Program Network in Artificial Intelligence (Language and Speech Technology).</li>
+              <li><strong>Full (100%) scholarship</strong> for the MSc in Data Science, University of Helsinki.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Teaching</h3>
+            <ul>
+              <li><strong>Teaching assistant</strong> for Introduction to Data Science and Introduction to Artificial Intelligence at the University of Helsinki: grading, exercise sessions, guiding students, and teamwork with the other TAs and the course teacher.</li>
+            </ul>
+          </div>
+          <div class="recog__wide">
+            <h3>Awards and honours</h3>
+            <ul>
+              <li><strong>AHZ Associates' Special Achievement Award</strong> for outstanding performance on the bachelor's degree <span class="when">2021</span></li>
+              <li><strong>The Duke of Edinburgh's International Award</strong>: Gold <span class="when">2022</span>, Silver <span class="when">2021</span> and Bronze <span class="when">2019</span></li>
+              <li><strong>Runner-up, Dash Hackathon</strong> <span class="when">2022</span></li>
+              <li><strong>1st Runner-Up, SPL Project Showcasing</strong> (Industry–Academia Collaboration, University of Dhaka) for the Dhaka University Calendar project <span class="when">2019</span></li>
+              <li><strong>3rd position, ICT Quiz</strong>, Independence Cup, Institute of Information Technology, University of Dhaka</li>
+              <li><strong>“Sprint Hero”</strong>, awarded by the team at SELISE as the most outstanding intern <span class="when">2020</span></li>
+              <li><strong>Certificate of Achievement</strong> for completing the Hampta Pass Trek, reaching a maximum altitude of 4,200 metres</li>
+            </ul>
+          </div>
+          <div class="recog__wide">
+            <h3>Service and community</h3>
+            <ul>
+              <li><strong>Student Representative</strong>, steering group of the Data Science Master's Programme, University of Helsinki <span class="when">Jan 2023 – Aug 2024</span></li>
+              <li><strong>International Student Tutor</strong>, Data Science Master's Programme, University of Helsinki <span class="when">Aug – Dec 2023</span></li>
+              <li><strong>Public speaking:</strong> freshman speaker of the BSSE 9th batch at the Freshers' and Farewell Ceremony <span class="when">2017</span></li>
+              <li><strong>House of Volunteer (HOV):</strong> Bangladesh Stockholm Junior Water Prize programme <span class="when">2019</span></li>
+              <li><strong>Street Lamp</strong>, a student non-profit organisation: food, clothes and gifts distribution for Eid-ul-Fitr <span class="when">2019</span></li>
+              <li><strong>IIT Software Engineers' Community (IITSEC):</strong> IIT Freshers' Reception and Graduates' Ceremony <span class="when">2019</span></li>
+              <li><strong>Dhaka University Cultural Society (DUCS):</strong> Natto Utsob, the drama festival of the University of Dhaka</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="creds reveal">
+          <div>
+            <h3>Documents</h3>
+            <div class="credgrid">
+              <div class="cred">
+                <span class="cred__t">MSc Data Science: degree certificate</span>
+                <span class="cred__d">University of Helsinki · PDF on Google Drive</span>
+                <a href="https://drive.google.com/file/d/1FedeRxiai4mFXJGcJVgPVTAhq0EYsG4d/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Open certificate</a>
+              </div>
+              <div class="cred">
+                <span class="cred__t">BSc Software Engineering: academic transcript</span>
+                <span class="cred__d">University of Dhaka · PDF on Google Drive</span>
+                <a href="https://drive.google.com/file/d/14ktW3jbsfRJoZTXqLtEoj0N1T9TVsCOr/view?usp=share_link" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Open transcript</a>
+              </div>
+              <div class="cred">
+                <span class="cred__t">Employment certificate</span>
+                <span class="cred__d">SELISE · Software Engineering Intern, Jan – Jun 2020 · PDF on Google Drive</span>
+                <a href="https://drive.google.com/file/d/1QvaGOnZPj76EEQU5Zxt0OohybAiq1PqL/view?usp=share_link" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Open certificate</a>
+              </div>
+              <div class="cred">
+                <span class="cred__t">Curriculum vitae</span>
+                <span class="cred__d">Two pages · PDF</span>
+                <a href="assets/Pritom-Kumar-Das-CV.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Download CV</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Online courses, verified by Coursera</h3>
+            <div class="credgrid credgrid--3">
+              <div class="cred">
+                <span class="cred__t">Neural Networks and Deep Learning</span>
+                <span class="cred__d">DeepLearning.AI · completed 23 August 2021 · about 24 hours</span>
+                <a href="https://www.coursera.org/account/accomplishments/verify/7PTLH659Z3F7" target="_blank" rel="noopener noreferrer">Verify on Coursera <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <div class="cred">
+                <span class="cred__t">Introduction to Psychology</span>
+                <span class="cred__d">Yale University · completed 1 August 2020 · about 17 hours</span>
+                <a href="https://www.coursera.org/account/accomplishments/verify/RJG8SWVBE99Y" target="_blank" rel="noopener noreferrer">Verify on Coursera <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <div class="cred">
+                <span class="cred__t">Learning How to Learn: Powerful mental tools to help you master tough subjects</span>
+                <span class="cred__d">Deep Teaching Solutions · completed 18 July 2020 · about 15 hours</span>
+                <a href="https://www.coursera.org/account/accomplishments/verify/E7XDSE9K58RJ" target="_blank" rel="noopener noreferrer">Verify on Coursera <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container section__grid">
+      <div class="rail">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's talk</h2>
+      </div>
+      <div class="content">
+        <div class="contact-box reveal">
+          <h3>Open to research collaborations and company secondments</h3>
+          <p>I'm exploring research collaborations and company secondments for spring 2027. If your team is thinking about trust, safety or usability in agentic AI, I'd like to hear what you're working on.</p>
+          <div class="contact-row">
+            <a class="btn btn--primary" href="mailto:pritom.das@helsinki.fi"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Send an email</a>
+            <a class="btn" href="https://www.linkedin.com/in/pritomkumar/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn" href="https://github.com/PritomKumar" target="_blank" rel="noopener noreferrer">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn" href="https://orcid.org/0009-0009-7284-7933" target="_blank" rel="noopener noreferrer">ORCID <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="contact-mail">
+            <span>pritom.das@helsinki.fi</span>
+            <button type="button" class="btn btn--sm" data-copy="pritom.das@helsinki.fi" data-copied="Email address copied"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <p>© <span id="year">2026</span> Pritom Kumar Das · Helsinki, Finland</p>
+      <p>Built with plain HTML, CSS and JavaScript. Fonts (Fraunces, IBM Plex) are self-hosted under the SIL Open Font License.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#top">Back to top</a>
+      <a href="https://github.com/PritomKumar/PritomKumar.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <a href="assets/fonts/LICENSES.txt">Font licences</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette__panel" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette__input">
+      <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="palette-input" type="text" role="combobox" aria-expanded="false" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Jump to a section, or run an action…" aria-label="Search commands">
+    </div>
+    <div class="palette__list" id="palette-list" role="listbox" aria-label="Commands"></div>
+    <div class="palette__foot"><span>↑↓ to move</span><span>Enter to select</span><span>Esc to close</span></div>
+  </div>
 </div>
 
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>
